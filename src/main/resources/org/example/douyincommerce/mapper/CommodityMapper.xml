@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.example.douyincommerce.mapper.CommodityMapper">
+
+    <select id="query" resultType="map">
+        select * from commodity
+        <where>
+            <if test="commodity.shop != null and commodity.shop!=''">
+                AND commodity.shop LIKE CONCAT('%', #{commodity.shop}, '%')
+            </if>
+            <if test="commodity.productname != null and commodity.productname!=''">
+                AND commodity.productname LIKE CONCAT('%', #{commodity.productname}, '%')
+            </if>
+        </where>
+    </select>
+
+</mapper>
